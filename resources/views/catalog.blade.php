@@ -1,42 +1,8 @@
 @extends('layouts.app')
 @section('content')
-	<section class="container hv-100">
+	<section class="container">
 		<div class="row">
-			<div class="col-lg-3">
-				<a href="">
-				<img src="{{URL::asset('/images/book1.jpg')}}" height="250px" width="250px">
-				<div class="imgtext">
-					<h5 class="text-center">Sci-fi</h5>
-				</div>
-				</a>
-			</div>
-
-			<div class="col-lg-3">
-				<a href="">
-				<img src="{{URL::asset('/images/book2.jpg')}}" height="250px" width="250px">
-				<div class="imgtext">
-					<h5 class="text-center">Romance</h5>
-				</div>
-				</a>
-			</div>
-
-			<div class="col-lg-3">
-				<a href="">
-				<img src="{{URL::asset('/images/book3.jpg')}}" height="250px" width="250px">
-				<div class="imgtext">
-					<h5 class="text-center">Fantasy</h5>
-				</div>
-				</a>
-			</div>
-
-			<div class="col-lg-3">
-				<a href="">
-				<div class="imgtext">
-					<img src="{{URL::asset('/images/book4.jpg')}}" height="250px" width="250px">
-					<h5 class="text-center">Young Adult</h5>
-				</div>
-				</a>
-			</div>
+			
 		</div>
 		<div class="col-lg-10">
 				<div class="row w-100">

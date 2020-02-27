@@ -15,5 +15,9 @@ class BookController extends Controller
     	
     	return view('catalog', compact("books", "genres"));
 	}
+
+	public function landing(){
+		return view('landingpage');
+	}
    
 }

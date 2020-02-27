@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //view catalog
 Route::get('/catalog', 'BookController@index');
+
+
+Route::get('/langdingpage', 'BookController@landing');
