@@ -1,85 +1,71 @@
 @extends('layouts.app')
 @section('content')
 	<section class="container">
-		<div class="row">
-			
+		<div class="flex flex-row">
+			<a href="#" class="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded 	hover:no-underline" >Fiction</a>
+
+			<a href="#" class="bg-purple-500 hover:bg-purple-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Romance</a>
+
+			<a href="#" class="bg-red-500 hover:bg-red-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Drama</a>
+
+			<a href="#" class="bg-yellow-500 hover:bg-yellow-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Thriller</a>
+
+			<a href="#" class="bg-green-500 hover:bg-green-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Fantasy</a>
+
+			<a href="#" class="bg-gray-500 hover:bg-gray-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Sci-fi</a>
+
 		</div>
-		<div class="col-lg-10">
-				<div class="row w-100">
-				@foreach($books as $book)
-				<div class="col-lg-4 my-2">
-					<div class="card">
-						<img src="{{asset($book->imgPath)}}" height="250px">
-						<div class="card-body">
-							<h6 class="card-title">
-								{{$book->name}}
-							</h6>
-							<p class="card-text">
-								Price {{$book->price}}
-							</p>
-							<p class="card-text">
-								Description: {{$book->description}}
-							</p>
-							
-							<p class="card-text">
-								Category: {{$book->category->name}}
-							</p>
-
-							@if($indiv_item->delete_at != NULL)
-								<p class="text-danger">
-									Out of Stock!!!
-								</p>
-							@endif
-
-						@auth
-						@if(Auth::user()->role_id==1)
-							<div class="card-footer d-flex">
-							@if($book->delete_at == NULL)
-								<form action="/deleteitem/{{$book->id}}" method="POST">
-								@csrf
-								@method('DELETE')
-								<button class="btn btn-danger" type="submit">
-									Delete
-								</button>
-								
-								</form>
-						
-							@else
-								<form action="/restoreitem/{{$book->id}}" method="POST">
-								@csrf
-									<button class="btn btn-danger" type="submit">
-										Restock
-									</button>
-								
-								</form>
-
-						
-							@endif
-							<a href="/edititem/{{$book->id}}" class="btn btn-info">Edit</a>
-							</div>
-						@else
-							<div class="card-footer">
-							
-								<form action="/addtocart/{{$book->id}}" method="POST">
-									@csrf
-									<input type="number" name="quantity" class="form-control" value="1" id="quantity_{{$book->id}}">
-									<button class="btn btn-primary my-2" onclick="addToCart({{$book->id}})" type="submit">
-										Add to Cart
-									</button>
-								</form>
-							</div>
-						
-						@endif
-						@endauth
-							
-						
-						</div>
-					</div>
-					
-				</div>
-			@endforeach
-		</div>
-			</div>
 		
+		{{-- row --}}
+		<div class="flex justify-center">
+			
+		<div class="flex flex-row ">
+
+			<div class="my-5 mr-3">
+			<h4 class="mb-2 font-bold">Sort by Price:</h4>
+				<select class="py-1 px-3 rounded">
+					<option>
+						Cheapest First
+					</option>
+					<option>
+						Most Expensive First
+					</option>
+				</select>
+			</div>
+			{{-- card --}}
+			@foreach($books as $book)
+			<div class="max-w-sm rounded overflow-hidden shadow-lg my-5 mx-2	">				
+				
+					<img src="{{URL::asset('/images/book1.jpg')}}" class="w-full" alt="Picture of the Book">
+					<div class="px-6 pt-4 ">
+						<h1 class="font-bold text-xl mb-2">{{$book->name}}</h1>
+						<hr class="mb-2">
+						<p>By: {{$book->author}}</p>
+						<p>Price: {{$book->price}}</p>
+						<p>Description: {{$book->description}}</p>
+						<p>Genre: {{$book->genre_id}}</p>
+						<p>Transaction Type: {{$book->transaction_type_id}}</p>
+					</div>
+					<div class="px-6 py-4 flex justify-center">
+
+						<form action="" method="POST">
+								@csrf
+								
+								<button class="inline-block bg-green-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-green-700">
+									Contact Owner
+								</button>
+								<button class="inline-block bg-yellow-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-yellow-700" onclick="" type="submit">
+									Add to Wish List
+								</button>
+						</form>
+		  			</div>
+			
+			</div>
+	  		@endforeach
+		</div>
+		</div>
+
+
+
 		</section>
 @endsection

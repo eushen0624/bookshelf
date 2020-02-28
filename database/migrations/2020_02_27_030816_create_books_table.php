@@ -22,10 +22,17 @@ class CreateBooksTable extends Migration
             $table->string('imgPath');
             $table->decimal('price', 10, 2);
             $table->unsignedBigInteger('genre_id');
+            $table->unsignedBigInteger('transaction_type_id');
 
             $table->foreign('genre_id')
                 ->references('id')
                 ->on('genres')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
+
+            $table->foreign('transaction_type_id')
+                ->references('id')
+                ->on('transaction_types')
                 ->onDelete('restrict')
                 ->onUpdate('cascade');
         });
