@@ -14,8 +14,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css?family=Lily+Script+One|NTR&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{mix('css/main.css')}}">
@@ -89,7 +89,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        {{-- <main class="py-4"> --}}
+        <main>
             @yield('content')
         </main>
     </div>

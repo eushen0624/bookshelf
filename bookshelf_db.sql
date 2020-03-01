@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 27, 2020 at 09:27 AM
+-- Generation Time: Feb 28, 2020 at 08:39 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.14
 
@@ -37,8 +37,18 @@ CREATE TABLE `books` (
   `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `imgPath` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `genre_id` bigint(20) UNSIGNED NOT NULL
+  `genre_id` bigint(20) UNSIGNED NOT NULL,
+  `transaction_type_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `created_at`, `updated_at`, `name`, `author`, `description`, `imgPath`, `price`, `genre_id`, `transaction_type_id`) VALUES
+(1, NULL, NULL, 'The Handmaid\'s Tale: The Graphic Novel', 'Margaret Atwood', 'The Handmaid\'s Tale, originally published in 1985, is a dystopian novel written by Canadian author Margaret Atwood', 'Random Image', '300.00', 3, 2),
+(2, NULL, NULL, 'Dune', 'Frank Herbert', 'Dune is a 1965 science fiction novel by American author Frank Herbert, originally published as two separate serials in Analog magazine.', 'Random Image', '420.00', 1, 1),
+(3, NULL, NULL, 'Love, Rosie', 'Cecelia Ahern', 'From the bestselling author of PS, I Love You comes a delightfully enchanting novel about what happens when two people who are meant to be together just can\'t seem to get it right.', 'Random Image', '220.00', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -67,6 +77,18 @@ CREATE TABLE `genres` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `genres`
+--
+
+INSERT INTO `genres` (`id`, `created_at`, `updated_at`, `name`) VALUES
+(1, NULL, NULL, 'Sci-fi'),
+(2, NULL, NULL, 'Romance'),
+(3, NULL, NULL, 'Fiction'),
+(4, NULL, NULL, 'Thiller'),
+(5, NULL, NULL, 'Fantasy'),
+(6, NULL, NULL, 'Drama');
 
 -- --------------------------------------------------------
 
@@ -194,6 +216,14 @@ CREATE TABLE `transaction_types` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `transaction_types`
+--
+
+INSERT INTO `transaction_types` (`id`, `created_at`, `updated_at`, `name`) VALUES
+(1, NULL, NULL, 'Sell'),
+(2, NULL, NULL, 'Swap');
+
 -- --------------------------------------------------------
 
 --
@@ -221,7 +251,8 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `books_genre_id_foreign` (`genre_id`);
+  ADD KEY `books_genre_id_foreign` (`genre_id`),
+  ADD KEY `books_transaction_type_id_foreign` (`transaction_type_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -305,7 +336,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -317,7 +348,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -359,7 +390,7 @@ ALTER TABLE `statuses`
 -- AUTO_INCREMENT for table `transaction_types`
 --
 ALTER TABLE `transaction_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -375,7 +406,8 @@ ALTER TABLE `users`
 -- Constraints for table `books`
 --
 ALTER TABLE `books`
-  ADD CONSTRAINT `books_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `books_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `books_transaction_type_id_foreign` FOREIGN KEY (`transaction_type_id`) REFERENCES `transaction_types` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orders`

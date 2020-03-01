@@ -11,8 +11,12 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 Auth::routes();
@@ -22,5 +26,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 //view catalog
 Route::get('/catalog', 'BookController@index');
 
+//Viewbook
+Route::get('/viewbook', 'BookController@viewBook');
 
-Route::get('/langdingpage', 'BookController@landing');
+//Filter
+Route::get('/catalog/{id}', 'BookController@filter');
+
+//Sort
+Route::get('/catalog/sort/{sort}', 'BookController@sort');
+
+//Add new book
+Route::get('/addbook', 'BookController@addbook');
+
+//saving the book
+Route::post('/addbook', 'BookController@save');
+
+//user profile
+Route::get('/profile', 'BookController@profile');

@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+/*@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";*/
+@import url(https://fonts.googleapis.com/css?family=Lily+Script+One|Scope+One&display=swap);@charset "UTF-8";
+
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -34,8 +36,9 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /*--font-family: "NTR";*/
+  font-family: 'NTR';
+  /*--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;*/
 }
 
 *,
@@ -45,7 +48,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "NTR";
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -66,8 +69,8 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
-  font-size: 0.9rem;
+  font-family: "NTR";
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
@@ -4544,9 +4547,10 @@ input[type=button].btn-block {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 2.2rem;
   line-height: inherit;
   white-space: nowrap;
+  font-family: 'Lily Script One';
 }
 
 .navbar-brand:hover,
@@ -6378,7 +6382,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NTR' ;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6503,7 +6507,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NTR' ;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
