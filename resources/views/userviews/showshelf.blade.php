@@ -1,69 +1,88 @@
 @extends('layouts.app')
 @section('content')
 
-	<section>
-		{{-- IN SHELF --}}
-	<div>
-		<div>
-			<h3>IN SHELF</h3>
-			<form>
-				<button>Empty Shelf</button>
-			</form>
-		</div>
-		
-		<hr>
-		<div class="flex flex-row">
-			<div class="max-w-sm rounded overflow-hidden shadow-lg my-5 mx-2">
-				<img src="#" class="w-full">
-				<div class="px-6 pt-4">
-					<h5>Book Name here</h5>
-					<p>Price</p>
-					<p>Description here</p>
-					<p>Transaction Type Here</p>
-					<p>Status here</p>
+	<div class="container">
+			<h1 class="text-center p-3 text-4xl font-bold">IN SHELF</h1>
+			<hr>
+		<div class="flex flex-row ">
+		{{-- card --}}
+			<div class="col-lg-10">
+				<div class="row w-100">
 
-					<div>
-						<form action="" methor="POST">
-							@csrf
-							<button>
-								<button class="inline-block bg-blue-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-blue-700">
-									Edit
-								</button>
-								<button class="inline-block bg-red-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-red-700" onclick="" type="submit">
-									Delete
-								</button>
-							</button>		
-						</form>
+					@foreach($books as $book)
+					
+					<div class="col-lg-4 p-3 my-2">
+						<div class="card">
+							<img src="{{asset($book->imgPath)}}" class="w-full" alt="Picture of the Book">
+							<div class="px-6 pt-4 ">
+								<h1 class="font-bold text-xl mb-2">{{$book->name}}</h1>
+								<hr class="mb-2">
+								<p>By: {{$book->author}}</p>
+								<p>Price: {{$book->price}}</p>
+								<p>Description: {{$book->description}}</p>
+								<p>Genre: {{$book->genre->name}}</p>
+								<p>Transaction Type: {{$book->transaction_type->name}}</p>
+							</div>
+							<div class="px-6 py-4 flex justify-center">
+
+								<form action="" method="POST">
+										@csrf
+										<button class="inline-block bg-green-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-green-700">
+											Edit
+										</button>
+										<button class="inline-block bg-red-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-yellow-700" onclick="" type="submit">
+											Delete
+										</button>
+								</form>
+				  			</div>
+						</div>
 					</div>
+					@endforeach
 				</div>
-			</div>
+			</div>		
 		</div>
-
 	</div>
 
 		{{-- OUT SHELF --}}
-	<div>
-		<div>
-			<h3>OUT SHELF</h3>
 
-		</div>
-		<hr>
-		
-		<div class="flex flex-row">
-			<div class="max-w-sm rounded overflow-hidden shadow-lg my-5 mx-2">
-				<img src="#" class="w-full">
-				<div class="px-6 pt-4">
-					<h5>Book Name here</h5>
-					<p>Price</p>
-					<p>Description here</p>
-					<p>Transaction Type Here</p>
-					<p>Status here</p>
-					<p>Return Date</p>
-					
+	<div class="container">
+			<h1 class="text-center p-3 text-4xl font-bold">OUT SHELF</h1>
+			<hr>
+		<div class="flex flex-row ">
+		{{-- card --}}
+			<div class="col-lg-10">
+				<div class="row w-100">
+					@foreach($books as $book)
+					<div class="col-lg-4 p-3 my-2">
+						<div class="card">
+							<img src="{{asset($book->imgPath)}}" class="w-full" alt="Picture of the Book">
+							<div class="px-6 pt-4 ">
+								<h1 class="font-bold text-xl mb-2">{{$book->name}}</h1>
+								<hr class="mb-2">
+								<p>By: {{$book->author}}</p>
+								<p>Price: {{$book->price}}</p>
+								<p>Description: {{$book->description}}</p>
+								<p>Genre: {{$book->genre->name}}</p>
+								<p>Transaction Type: {{$book->transaction_type->name}}</p>
+							</div>
+							<div class="px-6 py-4 flex justify-center">
+
+								<form action="" method="POST">
+										@csrf
+										<button class="inline-block bg-green-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-green-700">
+											Edit
+										</button>
+										<button class="inline-block bg-red-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-yellow-700" onclick="" type="submit">
+											Delete
+										</button>
+								</form>
+				  			</div>
+						</div>
+					</div>
+					@endforeach
 				</div>
-			</div>
+			</div>		
 		</div>
-		
 	</div>
-	</section>
+
 @endsection

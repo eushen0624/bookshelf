@@ -13,16 +13,21 @@ class BookController extends Controller
 	public function index(){
 		$books = Book::all();
     	$genres = Genre::all();
+        $transaction_types = TransactionType::all();        
     	
-    	return view('catalog', compact("books", "genres"));
+    	return view('catalog', compact("books", "genres", "transaction_types"));
 	}
 
 	public function landing(){
 		return view('landingpage');
 	}
 
-	public function viewBook(){
-		return view('userviews.viewbook');
+	public function viewBook($id){
+        $book = Book::find($id);
+        $genres = Genre::all();
+        $transaction_types = TransactionType::all();        
+        
+        return view('userviews.viewbook', compact("book", "genres", "transaction_types"));
 	}
 
     public function filter($id){
@@ -85,6 +90,16 @@ class BookController extends Controller
     	return redirect('/catalog');
     	
     	
+    }
+    
+
+    public function showshelf(){
+        $books = Book::all();
+        $genres = Genre::all();
+        $transaction_types = TransactionType::all();        
+        
+        return view('userviews.showshelf', compact("books", "genres", "transaction_types"));
+
     }
    
 }

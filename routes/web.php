@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/catalog', 'BookController@index');
 
 //Viewbook
-Route::get('/viewbook', 'BookController@viewBook');
+Route::get('/viewbook/{id}', 'BookController@viewBook');
 
 //Filter
 Route::get('/catalog/{id}', 'BookController@filter');
@@ -43,3 +43,5 @@ Route::post('/addbook', 'BookController@save');
 
 //user profile
 Route::get('/profile', 'BookController@profile');
+
+Route::get('/showshelf', 'BookController@showshelf');
