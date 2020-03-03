@@ -43,18 +43,15 @@ Route::post('/addbook', 'BookController@save');
 
 //user profile
 Route::get('/profile', 'BookController@profile');
-
+//Show Books in Shelf
 Route::get('/showshelf', 'BookController@showshelf');
-
+//Edit Book
 Route::get('/editbook/{id}', 'BookController@edit');
-//Save changes 
+//Save Changes 
 Route::patch('/editbook/{id}', 'BookController@update');
 
 //Admin Dashboard
 Route::get('/admindashboard', 'BookController@adminDashboard');
 
-
-
-
-
-// 
+//Delete Book
+Route::delete('/deletebook/{id}', 'BookController@deletebook');

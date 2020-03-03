@@ -147,5 +147,14 @@ class BookController extends Controller
     public function adminDashboard(){
         return view('adminviews.dashboard');
     }
+
+    public function deletebook($id){
+        $bookToDelete = Book::find($id);
+        $bookToDelete->delete();
+
+        return redirect()->back();
+    }
    
 }
+
+

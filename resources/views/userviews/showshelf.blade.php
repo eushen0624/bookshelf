@@ -31,7 +31,7 @@
 								<form action="/deletebook/{{$book->id}}" method="POST">
 										@csrf
 										@method('DELETE')
-										<button class="inline-block bg-red-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-yellow-700 hover:text-white" onclick="" type="submit">
+										<button class="inline-block bg-red-500 rounded px-3 py-2 mt-2 text-sm font-semibold text-white-700 mr-2 hover:bg-yellow-700 hover:text-white" type="submit">
 											Delete
 										</button>
 								</form>
