@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2020 at 08:39 AM
+-- Generation Time: Mar 02, 2020 at 09:44 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.14
 
@@ -48,7 +48,9 @@ CREATE TABLE `books` (
 INSERT INTO `books` (`id`, `created_at`, `updated_at`, `name`, `author`, `description`, `imgPath`, `price`, `genre_id`, `transaction_type_id`) VALUES
 (1, NULL, NULL, 'The Handmaid\'s Tale: The Graphic Novel', 'Margaret Atwood', 'The Handmaid\'s Tale, originally published in 1985, is a dystopian novel written by Canadian author Margaret Atwood', 'Random Image', '300.00', 3, 2),
 (2, NULL, NULL, 'Dune', 'Frank Herbert', 'Dune is a 1965 science fiction novel by American author Frank Herbert, originally published as two separate serials in Analog magazine.', 'Random Image', '420.00', 1, 1),
-(3, NULL, NULL, 'Love, Rosie', 'Cecelia Ahern', 'From the bestselling author of PS, I Love You comes a delightfully enchanting novel about what happens when two people who are meant to be together just can\'t seem to get it right.', 'Random Image', '220.00', 2, 1);
+(3, NULL, NULL, 'Love, Rosie', 'Cecelia Ahern', 'From the bestselling author of PS, I Love You comes a delightfully enchanting novel about what happens when two people who are meant to be together just can\'t seem to get it right.', 'Random Image', '220.00', 2, 1),
+(4, '2020-03-01 16:29:29', '2020-03-01 16:29:29', 'Deadly Little Lies', 'Laurie Faria Stolarz', 'Deadly Little Lies: A Touch Novel. by Laurie Faria Stolarz. Sixteen-year-old Camelia Hammond has survived a horrible nightmare come true.', 'images/1583108969.jpg', '450.00', 3, 1),
+(5, '2020-03-01 22:19:29', '2020-03-01 22:19:29', 'Deadly Little lies', 'Laurie Faria Stolarz', 'Deadly Little Lies: A Touch Novel. by Laurie Faria Stolarz. Sixteen-year-old Camelia Hammond has survived a horrible nightmare come true.', 'images/1583129969.jpg', '600.00', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -203,6 +205,16 @@ CREATE TABLE `statuses` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`id`, `created_at`, `updated_at`, `name`) VALUES
+(1, NULL, NULL, 'Pending'),
+(2, NULL, NULL, 'In Shelf'),
+(3, NULL, NULL, 'Out Shelf'),
+(4, NULL, NULL, 'Cancelled');
+
 -- --------------------------------------------------------
 
 --
@@ -336,7 +348,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -384,7 +396,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `statuses`
 --
 ALTER TABLE `statuses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaction_types`

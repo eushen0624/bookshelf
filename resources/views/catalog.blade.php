@@ -42,7 +42,9 @@
 				<div class="col-lg-4 p-3 my-2">
 					{{-- <div class="max-w-sm rounded overflow-hidden shadow-lg border-r border-b border-l border-gray-400"> --}}
 					<div class="border-t border-r border-b border-l border-blue-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
-						<img src="{{asset($book->imgPath)}}" class="w-full" alt="Picture of the Book" >
+						<div class="relative" style="width: 250px; height: 320px;">
+							<img src="{{asset($book->imgPath)}}" class="absolute object-cover h-full w-full" alt="Picture of the Book" >
+						</div>
 						<div class="px-6 pt-4 ">
 							<h1 class="font-bold text-xl mb-2">{{$book->name}}</h1>
 							<hr class="mb-2 bg-blue-200">

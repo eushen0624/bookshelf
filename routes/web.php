@@ -45,3 +45,16 @@ Route::post('/addbook', 'BookController@save');
 Route::get('/profile', 'BookController@profile');
 
 Route::get('/showshelf', 'BookController@showshelf');
+
+Route::get('/editbook/{id}', 'BookController@edit');
+//Save changes 
+Route::patch('/editbook/{id}', 'BookController@update');
+
+//Admin Dashboard
+Route::get('/admindashboard', 'BookController@adminDashboard');
+
+
+
+
+
+// 

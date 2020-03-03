@@ -5,7 +5,7 @@
 		<div class="col-lg-10 offset-lg-1">
 			
 			<div class="max-w-sm w-full lg:max-w-full lg:flex" style="height: 30rem;">
-			   <img src="{{asset($book->imgPath)}}" class=" w-1/2 h-full flex-none bg-cover object-fit rounded-l text-center overflow-hidden" alt="Picture of the Book">
+			   <img src="{{asset($book->imgPath)}}" class=" w-1/2 h-full flex-none bg-cover object-cover rounded-l text-center overflow-hidden" alt="Picture of the Book">
 
 			  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
 			    <div class="flex items-center">
@@ -82,7 +82,7 @@
 		});
 
 		document.querySelector('.close').addEventListener('click', function(){
-			document.querySelector('#bg-modal').style.display = 'none';
+			document.querySelector('.bg-modal').style.display = 'none';
 		});
 	</script>
 @endsection

@@ -101,7 +101,51 @@ class BookController extends Controller
         return view('userviews.showshelf', compact("books", "genres", "transaction_types"));
 
     }
+
+    public function edit($id){
+        $book = Book::find($id);
+        $genres = Genre::all();
+        $transaction_types = TransactionType::all();        
+        
+        return view('userviews.editbook', compact("book", "genres", "transaction_types"));    
+    }
+
+    public function update($id, Request $req){
+        $book = Book::find($id);
+
+        $rules = array(
+            "name" => "required",
+            "author" => "required",
+            "description" => "required",
+            "price" => "required|numeric",
+            "genre_id" => "required",
+            "transaction_type_id" => "required",
+            "imgPath" => "image|mimes:jpeg,jpg,png,gif,tiff,tif,bitmap,webP"
+        );
+
+        $this->validate($req, $rules);
+
+        $book->name = $req->name;
+        $book->author = $req->author;
+        $book->description = $req->description;
+        $book->price = $req->price;
+        $book->genre_id = $req->genre_id;
+        $book->transaction_type_id = $req->transaction_type_id;
+   
+       if($req->file('imgPath') != null){
+                $image = $req->file('imgPath');
+                $image_name = time(). ".".$image->getClientOriginalExtension();
+                $destination = "images/";
+                $image->move($destination, $image_name);
+                $book->imgPath = $destination.$image_name;
+            }
+
+            $book->save();
+            return redirect('/showshelf');
+    }
+
+    public function adminDashboard(){
+        return view('adminviews.dashboard');
+    }
    
 }
-
-
