@@ -16,6 +16,7 @@ class AddDetailsToUser extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('address')->nullable();
             $table->integer('phone')->nullable();
+            $table->string('avatar')->default('default.jpg')->nullable();
         });
     }
 

@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-
                 <div class="card-body">
 
                     <h1 class="text-center mb-4">{{ __('Register') }}</h1>

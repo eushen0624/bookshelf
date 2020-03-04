@@ -3,8 +3,8 @@
 	<section class="container mt-4">
 		{{-- Filter by Genre --}}
 		<div class="flex flex-row">
-				<a href="/catalog" class="bg-orange-500 hover:bg-red-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">All</a>
 			
+				<a href="/catalog" class="bg-orange-500 hover:bg-red-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">All</a>
 				<a href="/catalog/{{1}}" class="bg-gray-500 hover:bg-gray-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Sci-fi</a>
 
 				<a href="/catalog/{{2}}" class="bg-purple-500 hover:bg-purple-700 text-white text-center font-bold py-3 px-4 mx-2 w-1/6 rounded hover:no-underline">Romance</a>

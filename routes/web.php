@@ -55,3 +55,6 @@ Route::get('/admindashboard', 'BookController@adminDashboard');
 
 //Delete Book
 Route::delete('/deletebook/{id}', 'BookController@deletebook');
+
+//Buy Book
+Route::get('/buy', 'OrderController@buy');

@@ -7,29 +7,40 @@
 			<div class="max-w-sm w-full lg:max-w-full lg:flex" style="height: 30rem;">
 			   <img src="{{asset($book->imgPath)}}" class=" w-1/2 h-full flex-none bg-cover object-cover rounded-l text-center overflow-hidden" alt="Picture of the Book">
 
-			  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-			    <div class="flex items-center">
-			      <img class="w-10 h-10 rounded-full mr-4" src="{{URL::asset('/images/book6.jpg')}}" alt="Avatar">
-			      <div class="text-sm">
-			        <p class="text-gray-900 leading-none">User name Here</p>
-						<div class="flex">
-							<a href="#" id="sendMessage" class="bg-red-500 rounded px-3 py-1 mx-2 hover:no-underline hover:bg-red-700 text-white">Send a Message</a>
-							<a href="#" id="showPhone" class="bg-blue-500 rounded px-3 py-1 mx-2 hover:no-underline hover:bg-blue-700 text-white">Show Phone Number</a>
+			  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex">
+			  	<div class="flex flex-column">
+
+				    <div class="row mx-4">
+					     <img class="w-10 h-10 rounded-full" src="{{URL::asset('/images/book6.jpg')}}" alt="Avatar">
+					     <div class="text-sm px-4">
+					        <p class="text-gray-900 leading-none">User name Here</p>
+								<div class="flex mt-2">
+									<a href="#" id="sendMessage" class="bg-red-500 rounded px-3 py-1 mr-2  hover:no-underline hover:bg-red-700 text-white">Send a Message</a>
+									<a href="#" id="showPhone" class="bg-blue-500 rounded px-3 py-1  hover:no-underline hover:bg-blue-700 text-white">Show Phone Number</a>
+								</div>
+					      </div>
+				    </div>
+				    	<hr class="mt-4"> 
+				    <div class="m-4">
+					    <div class="text-red-600 font-bold text-3xl">{{$book->name}}</div>
+						    <p class="text-lg">By: <span>{{$book->author}}</span></p>
+							<p class="text-lg">Price: <span>{{$book->price}}</span></p>
+							<p class="text-lg">Description: <span>{{$book->description}}</span></p>
+							<p class="text-lg">Genre: <span>{{$book->genre->name}}</span></p>
+							<p class="text-lg">Transaction Type: <span>{{$book->transaction_type->name}}</span></p>
 						</div>
-			      </div>
-			    </div>
-			      <div class="text-gray-900 font-bold text-xl">{{$book->name}}</div>
-			     	<p>By: {{$book->author}}</p>
-					<p>Price: {{$book->price}}</p>
-					<p>Description: {{$book->description}}</p>
-					<p>Genre: {{$book->genre->name}}</p>
-					<p>Transaction Type: {{$book->transaction_type->name}}</p>
-			    </div>
+						<div class="flex justify-center">
+							<a href="/buy" class="bg-green-500 font-semibold hover:bg-green-700 hover:text-white text-center py-2  px-4 mx-2 w-1/6 rounded hover:no-underline">Buy</a>
+						</div>
+					</div>
+				</div>
+			    
 			</div>
 								
 		</div>
 		
 	</section>
+
 	<div class="bg-modal">
 		<div class="modal-content">
 			<div class="close">+</div>
