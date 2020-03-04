@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class RoleController extends Controller
 {
-    //
+    public function profile(){
+    	return view('profile', array('user' => Auth::user()));
+    }
 }

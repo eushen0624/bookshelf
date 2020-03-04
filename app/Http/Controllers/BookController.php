@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use \App\Book;
 use \App\Genre;
 use \App\TransactionType;
+use Auth;
+use \App\User;
 
 class BookController extends Controller
 {
@@ -47,7 +49,6 @@ class BookController extends Controller
     	$transaction_types = TransactionType::all();
 
     	return view('userviews.addbook', compact('genres', 'transaction_types'));
-
     }
 
 
@@ -73,6 +74,7 @@ class BookController extends Controller
     	$newBook->price=$req->price;
     	$newBook->genre_id=$req->genre_id;
     	$newBook->transaction_type_id=$req->transaction_type_id;
+        $newBook->book_owner_id=Auth::user()->id;
 
     	//image handling
     	$image = $req->file('imgPath');
@@ -154,6 +156,25 @@ class BookController extends Controller
 
         return redirect()->back();
     }
+
+     public function viewusers(){
+        $users = User::all();
+
+        return view('adminviews.users', compact('users'));
+    }
+
+    public function changeRole($id){
+        $user = User::find($id);
+
+        if($user->role_id == 2){
+            $user->role_id = 1;
+        }else{
+            $user->role_id = 2;
+        }
+            $user->save();
+            return redirect('/viewusers');
+    }
+
    
 }
 

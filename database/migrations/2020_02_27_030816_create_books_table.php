@@ -23,6 +23,7 @@ class CreateBooksTable extends Migration
             $table->decimal('price', 10, 2);
             $table->unsignedBigInteger('genre_id');
             $table->unsignedBigInteger('transaction_type_id');
+            $table->unsignedBigInteger('book_owner_id');
 
             $table->foreign('genre_id')
                 ->references('id')
@@ -33,6 +34,12 @@ class CreateBooksTable extends Migration
             $table->foreign('transaction_type_id')
                 ->references('id')
                 ->on('transaction_types')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
+
+            $table->foreign('book_owner_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('restrict')
                 ->onUpdate('cascade');
         });

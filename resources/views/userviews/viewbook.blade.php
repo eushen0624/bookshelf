@@ -30,7 +30,7 @@
 							<p class="text-lg">Transaction Type: <span>{{$book->transaction_type->name}}</span></p>
 						</div>
 						<div class="flex justify-center">
-							<a href="/buy" class="bg-green-500 font-semibold hover:bg-green-700 hover:text-white text-center py-2  px-4 mx-2 w-1/6 rounded hover:no-underline">Buy</a>
+							<a href="/buy/{{$book->id}}" class="bg-green-500 font-semibold hover:bg-green-700 hover:text-white text-center py-2  px-4 mx-2 w-1/6 rounded hover:no-underline">Buy</a>
 						</div>
 					</div>
 				</div>
@@ -40,11 +40,11 @@
 		</div>
 		
 	</section>
-
+	{{-- Message Button --}}
 	<div class="bg-modal">
 		<div class="modal-content">
 			<div class="close">+</div>
-			<form>
+			<form class="messageForm" id="messageForm">
 				<div class="form-group pt-5 px-5">
 
 					<label class="text-gray-700">Message:</label>
@@ -54,6 +54,10 @@
 					<button type="submit" class="text-center bg-blue-500 hover:bg-blue-700 hover:text-white py-1 px-4 rounded">Send</button>
 			  	</div>
 			</form>
+			<div class="flex justify-center content-center">
+				<h1 class="text-3xl" id="phoneNumber">09505080405</h1>
+
+			</div>
 		</div>
 	</div>
 
@@ -87,13 +91,29 @@
 		}
 	</style>
 
+
+{{-- Send Message and show phone button --}}
 	<script type="text/javascript">
-		document.getElementById("sendMessage").addEventlistener('click', function(){
-			document.querySelector('.bg-modal').style.display = 'flex';
+
+		document.getElementById('sendMessage').addEventListener("click", function() {
+			document.querySelector('.bg-modal').style.display = "flex";
+			$('#phoneNumber').hide();
+			$('.messageForm').show();
 		});
 
-		document.querySelector('.close').addEventListener('click', function(){
-			document.querySelector('.bg-modal').style.display = 'none';
+		document.querySelector('.close').addEventListener("click", function() {
+			document.querySelector('.bg-modal').style.display = "none";
 		});
+
+		document.getElementById('showPhone').addEventListener("click", function() {
+			document.querySelector('.bg-modal').style.display = "flex";
+			$('#phoneNumber').show();
+			$('.messageForm').hide();
+		});
+
+		document.querySelector('#messageForm').addEventListener('submit', e => {
+			e.preventDefault();
+			console.log("hello");
+		})
 	</script>
 @endsection

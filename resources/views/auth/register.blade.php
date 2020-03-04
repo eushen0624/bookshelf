@@ -91,7 +91,7 @@
                         </div>
 
                          {{-- Select if Admin or User --}}
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select Role') }}</label>
                               <div class="col-md-2">
                                   <select class="form-control shadow appearance-none border border-gray-400 text-gray-600 hover:border-gray-500 py-2 px-3 mb-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
@@ -99,7 +99,7 @@
                                     <option>Admin</option>
                                   </select>
                               </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

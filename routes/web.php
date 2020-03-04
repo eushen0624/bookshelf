@@ -21,13 +21,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+//user profile
+Route::get('/profile', 'RoleController@profile');
 
 //view catalog
 Route::get('/catalog', 'BookController@index');
-
-//Viewbook
-Route::get('/viewbook/{id}', 'BookController@viewBook');
 
 //Filter
 Route::get('/catalog/{id}', 'BookController@filter');
@@ -35,26 +36,46 @@ Route::get('/catalog/{id}', 'BookController@filter');
 //Sort
 Route::get('/catalog/sort/{sort}', 'BookController@sort');
 
-//Add new book
-Route::get('/addbook', 'BookController@addbook');
-
-//saving the book
-Route::post('/addbook', 'BookController@save');
-
-//user profile
-Route::get('/profile', 'BookController@profile');
 //Show Books in Shelf
 Route::get('/showshelf', 'BookController@showshelf');
-//Edit Book
-Route::get('/editbook/{id}', 'BookController@edit');
-//Save Changes 
-Route::patch('/editbook/{id}', 'BookController@update');
 
-//Admin Dashboard
-Route::get('/admindashboard', 'BookController@adminDashboard');
 
-//Delete Book
-Route::delete('/deletebook/{id}', 'BookController@deletebook');
+//ADMIN ROUTES
+Route::middleware("admin")->group(function(){
 
-//Buy Book
-Route::get('/buy', 'OrderController@buy');
+	//Admin Dashboard
+	Route::get('/admindashboard', 'BookController@adminDashboard');
+	//View users
+	Route::get('/viewusers', 'BookController@viewusers');
+
+	Route::get('/changerole/{id}', 'BookController@changeRole');
+});
+
+
+//USER ROUTE
+Route::middleware('user')->group(function(){
+
+	//Viewbook
+	Route::get('/viewbook/{id}', 'BookController@viewBook');
+
+	//Add new book
+	Route::get('/addbook', 'BookController@addbook');
+
+	//saving the book
+	Route::post('/addbook', 'BookController@save');
+
+	//Edit Book
+	Route::get('/editbook/{id}', 'BookController@edit');
+	
+	//Save Changes 
+	Route::patch('/editbook/{id}', 'BookController@update');
+
+	//Delete Book
+	Route::delete('/deletebook/{id}', 'BookController@deletebook');
+
+	//Buy Book
+	Route::get('/buy/{id}', 'OrderController@buy');
+
+});
+
+
